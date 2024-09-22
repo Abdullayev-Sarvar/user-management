@@ -6,6 +6,9 @@ const Home = lazy(() => import('../routes/home/Home'));
 const Auth = lazy(() => import('./auth/Auth'));
 const Login = lazy(() => import('./auth/login/Login'));
 const SignUp = lazy(() => import('./auth/signup/SignUp'));
+const NotFound = lazy(() => import('./notfound/NotFound'));
+const CreateUser = lazy(() => import('./create/CreateUser'));
+const Details = lazy(() => import('./details/Details'));
 
 const RoutesController = () => {
   return useRoutes([
@@ -26,6 +29,18 @@ const RoutesController = () => {
           element: <Suspense><SignUp /></Suspense>
         }
       ]
+    },
+    {
+      path: "/create",
+      element: <Suspense><CreateUser /></Suspense>
+    },
+    {
+      path: "/details/:id",
+      element: <Suspense><Details /></Suspense>
+    },
+    {
+      path: "*",
+      element: <Suspense><NotFound /></Suspense>
     }
   ])
 }
